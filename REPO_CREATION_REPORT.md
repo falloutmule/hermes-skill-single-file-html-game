@@ -65,4 +65,4 @@
 
 ## SNC docs-only commit
 
-- (Recorded after SNC commit below.)
+- `c161b54` — docs: link standalone Hermes single-file HTML game skill repo
