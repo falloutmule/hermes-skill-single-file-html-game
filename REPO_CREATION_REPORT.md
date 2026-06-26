@@ -22,8 +22,8 @@
 ## CURRENT EXACT STATE
 
 - Local path: `C:\Users\fallo\Documents\HermesProjects\hermes-skill-single-file-html-game`
-- GitHub: (updated after push)
-- Commit: (updated after push)
+- GitHub: https://github.com/falloutmule/hermes-skill-single-file-html-game
+- Commit: `d9be6f2` (initial publish)
 
 ## REMAINING BLOCKERS
 
@@ -61,8 +61,8 @@
 
 ## SNC touched
 
-- **No** (until optional docs link).
+- **Yes — docs only:** `docs/README.md` link to this skill repo (gameplay/tests/index.html unchanged).
 
 ## SNC docs-only commit
 
-- (If added: hash here.)
+- (Recorded after SNC commit below.)
