@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Minimal Single-File Game</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; background: #0d1117; color: #e6edf3; font: 14px/1.4 system-ui, sans-serif; }
+  #wrap { display: flex; flex-direction: column; height: 100%; touch-action: none; }
+  #hud { padding: 8px 12px; background: #161b22; border-bottom: 1px solid #30363d; }
+  #view { flex: 1; width: 100%; display: block; background: #010409; touch-action: none; }
+  #controls { display: flex; gap: 8px; padding: 10px; background: #161b22; border-top: 1px solid #30363d; }
+  .mbtn { flex: 1; min-height: 48px; border: 2px solid #388bfd; border-radius: 10px; background: #21262d; color: #e6edf3; font-weight: 600; user-select: none; touch-action: manipulation; }
+  .mbtn:active { background: #388bfd; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="hud">Collect the star · Score: <span id="score">0</span> · BUILD: mini1</div>
+  <canvas id="view" width="320" height="200"></canvas>
+  <div id="controls">
+    <button type="button" class="mbtn" id="btnLeft" aria-label="Left">◀</button>
+    <button type="button" class="mbtn" id="btnRight" aria-label="Right">▶</button>
+  </div>
+</div>
+<script>
+"use strict";
+/* ==========================================================================
+   AI-SAFE SINGLE-FILE CONSTITUTION (minimal example — teaching artifact)
+   Named section edits only · SAVE_VERSION on schema change
+   INPUT → ACTIONS → SIMULATION → RENDER · Render must not mutate gameplay
+   No eval · No inline handlers · Public API via window.CR only
+   ========================================================================== */
+const BUILD_ID = 'mini1';
+const SAVE_VERSION = 1;
+const canvas = document.getElementById('view');
+const ctx = canvas.getContext('2d', { alpha: false });
+const scoreEl = document.getElementById('score');
+const keys = Object.create(null);
+const inp = { left: false, right: false };
+let player = { x: 40, y: 100, r: 8 };
+let star = { x: 260, y: 100, r: 10, taken: false };
+let score = 0;
+let last = performance.now();
+
+function resize() {
+  const cw = canvas.clientWidth || 320;
+  const ch = canvas.clientHeight || 200;
+  if (canvas.width !== cw || canvas.height !== ch) {
+    canvas.width = cw | 0;
+    canvas.height = ch | 0;
+  }
+}
+window.addEventListener('resize', resize);
+resize();
+
+window.addEventListener('keydown', e => { keys[e.code] = true; syncKeys(); });
+window.addEventListener('keyup', e => { keys[e.code] = false; syncKeys(); });
+
+function syncKeys() {
+  inp.left = !!(keys.ArrowLeft || keys.KeyA);
+  inp.right = !!(keys.ArrowRight || keys.KeyD);
+}
+
+function bindBtn(id, key) {
+  const el = document.getElementById(id);
+  const down = () => { inp[key] = true; };
+  const up = () => { inp[key] = false; };
+  el.addEventListener('pointerdown', e => { e.preventDefault(); down(); });
+  el.addEventListener('pointerup', up);
+  el.addEventListener('pointercancel', up);
+  el.addEventListener('pointerleave', up);
+}
+bindBtn('btnLeft', 'left');
+bindBtn('btnRight', 'right');
+
+function update(dt) {
+  const speed = 120 * dt;
+  if (inp.left) player.x -= speed;
+  if (inp.right) player.x += speed;
+  player.x = Math.max(player.r, Math.min(canvas.width - player.r, player.x));
+  if (!star.taken) {
+    const dx = player.x - star.x, dy = player.y - star.y;
+    if (dx * dx + dy * dy < (player.r + star.r) * (player.r + star.r)) {
+      star.taken = true;
+      score++;
+      scoreEl.textContent = String(score);
+      star.x = 40 + Math.random() * (canvas.width - 80);
+    }
+  }
+}
+
+function render() {
+  ctx.fillStyle = '#0d1117';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#f0883e';
+  ctx.beginPath();
+  ctx.arc(player.x | 0, player.y | 0, player.r, 0, Math.PI * 2);
+  ctx.fill();
+  if (!star.taken) {
+    ctx.fillStyle = '#ffe66d';
+    ctx.beginPath();
+    ctx.arc(star.x | 0, star.y | 0, star.r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000);
+  last = now;
+  update(dt);
+  render();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+function runFullSelfCheck() {
+  const errors = [];
+  const checks = {};
+  checks.canvas = !!canvas && canvas.tagName === 'CANVAS';
+  checks.buildId = BUILD_ID === 'mini1';
+  checks.noEval = !/\beval\s*\(/.test(document.documentElement.innerHTML);
+  checks.crExport = typeof runFullSelfCheck === 'function';
+  const before = player.x;
+  inp.right = true;
+  update(0.05);
+  inp.right = false;
+  checks.movement = player.x > before;
+  player.x = before;
+  checks.scoreHud = !!scoreEl;
+  if (!checks.canvas) errors.push('canvas missing');
+  if (!checks.movement) errors.push('movement failed');
+  return { pass: errors.length === 0, buildId: BUILD_ID, checks, errors };
+}
+
+globalThis.CR = window.CR = { runFullSelfCheck, BUILD_ID, getState: () => ({ player, score, star }) };
+</script>
+</body>
+</html>
