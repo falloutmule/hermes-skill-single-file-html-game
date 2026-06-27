@@ -54,7 +54,7 @@
 | SKILL.md §8 link | `docs/failure-mode-catalog.md` |
 | README.md links | catalog + `templates/failure-mode-audit-template.md` |
 | Secret scan | `rg` on repo — no live secrets in new files; policy mentions only |
-| Commit | *(filled after `git commit`)* |
+| Commit | `1ed6d36` (`1ed6d36901a2fde7bf980f5a38f3c7f8aedbaa73`) |
 | GitHub repo | https://github.com/falloutmule/hermes-skill-single-file-html-game |
 
 ## RESULT
