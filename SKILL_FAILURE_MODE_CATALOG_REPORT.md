@@ -5,36 +5,35 @@
 
 ## WHAT WAS DONE
 
-- Added **`docs/failure-mode-catalog.md`** — purpose, severity model, catalog entries **A–T** (symptoms, cause, prevention, harness, do-not, SNC public examples), guard report language, how to use, SNC example table.
-- Added **`templates/failure-mode-audit-template.md`** — per-card checklist for modes A–T + proof / unchanged / PASS-FAIL.
-- Added **`docs/README.md`** — index linking catalog and other docs.
-- Updated **`SKILL.md`** — new §8 Failure-mode catalog; §9 Report format; §10 Do-not; link in examples list.
-- Updated **`README.md`** — repo structure, quick-start pointer, links to catalog + audit template.
-- Updated **`references/snc-can-run-lessons.md`** — pointer to catalog (no SNC code copied).
+- Added `docs/failure-mode-catalog.md` with modes A–T, severity labels, prevention patterns, proof expectations, and public SNC examples.
+- Added `templates/failure-mode-audit-template.md` as a per-card checklist.
+- Added `docs/README.md` as the docs index.
+- Updated `SKILL.md`, `README.md`, and `references/snc-can-run-lessons.md` to point to the catalog.
+- Closed this report after push confirmation.
 
 ## WHAT WAS VERIFIED
 
-- **Required files exist:** catalog, audit template, `docs/README.md`.
-- **Markdown links:** relative links from `README.md`, `SKILL.md`, `docs/failure-mode-catalog.md`, `docs/README.md` → catalog + template (repo-local).
-- **Deliverable rule preserved:** `SKILL.md` still states final release artifact is **one HTML file** / root `index.html`.
-- **No runtime dependencies added:** docs/templates only; `examples/minimal-single-file-game.html` untouched.
-- **SNC gameplay:** `solidarity-not-charity-can-run` — no changes to `index.html` or gameplay commits this task (`HEAD` remains docs closure `386f3f0`; no new SNC commit from this handoff).
-- **No wholesale private skill copy:** catalog written for public skill repo; distilled patterns + public SNC report links only.
-- **Secret scan (this commit’s new/edited paths):** no API keys, `ghp_`, or `.env` files. New docs mention `TOKEN`/`SECRET` only as scan guidance. Pre-existing **`REPO_CREATION_REPORT.md`** still contains historical local paths from initial repo creation — not expanded by this card.
+- Required files exist.
+- Repo-local Markdown links were checked.
+- The one-HTML-file deliverable rule remains in `SKILL.md`.
+- No runtime dependencies were added.
+- SNC gameplay was not changed; `controls1` / `4e311e7` remains the SNC reference baseline.
+- No private Hermes skill tree was copied wholesale.
+- New/edited files were scanned and no live credentials or env files were found.
+- Push was confirmed on GitHub.
 
 ## WHAT FAILED
 
-- Nothing blocking ship of skill docs.
+- Nothing blocking.
 
 ## CURRENT EXACT STATE
 
 | Item | Value |
-|------|--------|
-| **Skill repo** | `hermes-skill-single-file-html-game` |
-| **Local path** | `C:\Users\fallo\Documents\HermesProjects\hermes-skill-single-file-html-game` |
-| **New catalog** | `docs/failure-mode-catalog.md` |
-| **New template** | `templates/failure-mode-audit-template.md` |
-| **SNC touched** | No |
+|------|-------|
+| Skill repo | `hermes-skill-single-file-html-game` |
+| Catalog | `docs/failure-mode-catalog.md` |
+| Audit template | `templates/failure-mode-audit-template.md` |
+| SNC touched | No gameplay changes |
 
 ## REMAINING BLOCKERS
 
@@ -42,21 +41,20 @@
 
 ## NEXT ACTIONABLE STEP
 
-- Optional: install or symlink this repo as a Hermes skill if desired (not verified in this task).
+- Optional: install or symlink this repo as a Hermes skill if desired.
 
 ## EVIDENCE
 
 | Evidence | Path / value |
-|----------|----------------|
+|----------|--------------|
 | Catalog | `docs/failure-mode-catalog.md` |
 | Audit template | `templates/failure-mode-audit-template.md` |
 | Docs index | `docs/README.md` |
-| SKILL.md §8 link | `docs/failure-mode-catalog.md` |
-| README.md links | catalog + `templates/failure-mode-audit-template.md` |
-| Secret scan | `rg` on repo — no live secrets in new files; policy mentions only |
-| Commit | `1ed6d36` (`1ed6d36901a2fde7bf980f5a38f3c7f8aedbaa73`) |
+| Catalog commit | `1ed6d36` |
+| Report hash commit | `d1414d6` |
+| Closure commit | this docs-only report wording update |
 | GitHub repo | https://github.com/falloutmule/hermes-skill-single-file-html-game |
 
 ## RESULT
 
-**PASS** (pending push confirmation in commit hash below).
+**PASS** — failure-mode catalog is published, linked, and report closure is complete.
