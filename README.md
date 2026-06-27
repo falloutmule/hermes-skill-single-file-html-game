@@ -16,6 +16,8 @@ One HTML document contains markup, styles, and game logic. Players open it from 
 4. Run self-check and Playwright when available — **do not ask the user to manually verify** what the harness can prove.
 5. Write a report using **`templates/hermes-report-template.md`**.
 
+**Failure modes:** Before a card, read **[docs/failure-mode-catalog.md](docs/failure-mode-catalog.md)** and copy **[templates/failure-mode-audit-template.md](templates/failure-mode-audit-template.md)** into your workflow.
+
 Small throwaway prototypes can skip the full harness; **shipped** games should use boot checks, `window.CR.runFullSelfCheck()`, and CI when the project invests in quality.
 
 ## What this workflow prevents
@@ -43,13 +45,15 @@ Small throwaway prototypes can skip the full harness; **shipped** games should u
 |------|---------|
 | **SKILL.md** | Full Hermes skill (rules, workflow, harness) |
 | **examples/** | Minimal playable demo + sample handoff |
-| **templates/** | Constitution, reports, checklists |
-| **docs/** | Policy, mobile, harness, Pages, CI, organization |
+| **templates/** | Constitution, reports, checklists, **failure-mode audit** |
+| **docs/** | Policy, mobile, harness, Pages, CI, organization, **failure-mode catalog** |
 | **references/** | SNC lessons + Playwright/repo patterns |
 
 ## Links
 
 - **Skill:** [SKILL.md](SKILL.md)  
+- **Failure-mode catalog:** [docs/failure-mode-catalog.md](docs/failure-mode-catalog.md)  
+- **Failure-mode audit template:** [templates/failure-mode-audit-template.md](templates/failure-mode-audit-template.md)  
 - **Minimal example:** [examples/minimal-single-file-game.html](examples/minimal-single-file-game.html)  
 - **Sample handoff:** [examples/sample-handoff.md](examples/sample-handoff.md)  
 

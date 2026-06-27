@@ -102,7 +102,13 @@ package.json            # optional, for Playwright CI only (not game runtime)
 
 Not every toy needs the full matrix; serious ships should grow toward SNC-level guards incrementally.
 
-## 8. Report format
+## 8. Failure-mode catalog
+
+- **[docs/failure-mode-catalog.md](docs/failure-mode-catalog.md)** — common breakages (deliverable drift, harness pollution, stuck input, save corruption, layout drift, proofless success, etc.) with severity, prevention, and harness proof.
+- Before every **serious card**, identify which catalog modes (A–T) apply; use **[templates/failure-mode-audit-template.md](templates/failure-mode-audit-template.md)**.
+- Guard reports should **explicitly state** which failure modes were guarded (and which were N/A).
+
+## 9. Report format
 
 ```
 WHAT WAS DONE
@@ -117,7 +123,7 @@ GITHUB PAGES URL
 
 Use **`templates/hermes-report-template.md`**. End with explicit **PASS** or **FAIL** — not “looks good.”
 
-## 9. Do-not list
+## 10. Do-not list
 
 - No broad rewrites without request  
 - No changing deliverable type (HTML → React, etc.)  
@@ -136,6 +142,7 @@ Use **`templates/hermes-report-template.md`**. End with explicit **PASS** or **F
 - **references/snc-can-run-lessons.md** — what production proved  
 - **references/playwright-cr-full-selfcheck-harness.md** — full external harness  
 - **references/repo-root-organization-guard-reports.md** — clean GitHub root  
+- **docs/failure-mode-catalog.md** — failure modes A–T + SNC public examples  
 
 ## When to load
 

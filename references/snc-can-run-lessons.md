@@ -37,6 +37,11 @@
 - Upload proof artifacts on every run.
 - CI wiring does not require gameplay changes.
 
+## Failure-mode catalog (skill repo)
+
+- **`docs/failure-mode-catalog.md`** — reusable A–T checklist distilled from SNC production guards (onboarding, visual readability, rectangle fix, sound, declarative controls, CI artifacts).
+- Use before each card; do not copy SNC `index.html` into the skill repo.
+
 ## What to copy for a new game
 
 Start minimal (`examples/minimal-single-file-game.html`), add guards as the game grows — not every prototype needs the full SNC matrix on day one.
