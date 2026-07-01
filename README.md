@@ -56,6 +56,10 @@ Small throwaway prototypes can skip the full harness; **shipped** games should u
 - **Failure-mode audit template:** [templates/failure-mode-audit-template.md](templates/failure-mode-audit-template.md)  
 - **Minimal example:** [examples/minimal-single-file-game.html](examples/minimal-single-file-game.html)  
 - **Sample handoff:** [examples/sample-handoff.md](examples/sample-handoff.md)  
+- **Dual menu (mobile vs canvas):** [references/dual-menu-mobile-vs-canvas.md](references/dual-menu-mobile-vs-canvas.md)  
+- **Declarative custom controls:** [references/declarative-custom-mobile-controls.md](references/declarative-custom-mobile-controls.md)  
+
+Synced from Hermes local skill **`self-contained-html-games`** (2026-07).
 
 Inspired and validated by **Solidarity Not Charity Can Run** (single-file roguelike, Playwright guard suite, GitHub Actions CI). This skill is **reusable** for other titles.
 

@@ -2,6 +2,7 @@
 
 Lessons from production single-file mobile games (including SNC Can Run):
 
+- [ ] **MOBILE setting** — OFF forces desktop/canvas menus on phone; ON/AUTO enables HTML overlay + portrait dashboard (`references/dual-menu-mobile-vs-canvas.md`).
 - [ ] **MOVE release** — joystick `pointerup` / `pointercancel` clears `inp` movement flags.
 - [ ] **LOOK release** — look pad clears turn state on cancel/up.
 - [ ] **Thumb drift** — after release, player must not keep moving.

@@ -1,7 +1,7 @@
 ---
 name: single-file-html-game
 description: "Hermes skill for planning, building, testing, verifying, and shipping AI-safe single-file HTML games."
-version: 1.0.0
+version: 1.1.0
 platforms: [linux, macos, windows]
 ---
 
@@ -142,7 +142,9 @@ Use **`templates/hermes-report-template.md`**. End with explicit **PASS** or **F
 - **references/snc-can-run-lessons.md** — what production proved  
 - **references/playwright-cr-full-selfcheck-harness.md** — full external harness  
 - **references/repo-root-organization-guard-reports.md** — clean GitHub root  
-- **docs/failure-mode-catalog.md** — failure modes A–T + SNC public examples  
+- **references/dual-menu-mobile-vs-canvas.md** — canvas vs HTML menu diagnostics  
+- **references/declarative-custom-mobile-controls.md** — user-editable control layout  
+- **docs/failure-mode-catalog.md** — failure modes A–T + SNC public examples
 
 ## When to load
 
